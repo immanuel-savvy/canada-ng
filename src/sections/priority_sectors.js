@@ -24,6 +24,7 @@ class Priority_sectors extends React.Component {
   render() {
     let { pages } = this.state;
 
+    let r = true;
     return (
       <Nav_context.Consumer>
         {({ sectors }) => {
@@ -44,10 +45,17 @@ class Priority_sectors extends React.Component {
                   </div>
                 </div>
                 <div className="row justify-content-center">
-                  {sectors?.map((sector) => {
+                  {sectors?.map((sector, i) => {
                     if (!sector.page) return;
 
-                    return <Prior_sector sector={{ ...sector }} />;
+                    r = !r;
+                    return (
+                      <Prior_sector
+                        reverted={r}
+                        gray={r}
+                        sector={{ ...sector }}
+                      />
+                    );
                   })}
                 </div>
               </div>

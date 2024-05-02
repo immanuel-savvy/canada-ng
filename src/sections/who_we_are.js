@@ -42,6 +42,8 @@ class Who_we_are extends React.Component {
     let { about_statement, more_details, image, image_file_hash, bullets } =
       about || new Object();
 
+    if (!about || !about_statement) return;
+
     return (
       <>
         <section>
