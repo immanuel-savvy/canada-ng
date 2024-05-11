@@ -68,7 +68,7 @@ class Home extends React.Component {
 
                 <Who_we_are about={about} home />
 
-                <Featured_sectors />
+                {/* <Featured_sectors /> */}
                 {/* <Upcoming_seminars loggeduser={loggeduser} /> */}
 
                 <Priority_sectors />

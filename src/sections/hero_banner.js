@@ -22,7 +22,7 @@ class Hero_banner extends React.Component {
           backgroundColor: "black",
           width: "100%",
         }}
-        data-overlay={`${overlay || 5}`}
+        data-overlay={`${overlay || 3}`}
       >
         <div className="container">
           <div className="row align-items-center mx-auto">

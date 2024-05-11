@@ -62,7 +62,7 @@ const dow_index_inverse = new Object({
   sunday: 7,
 });
 
-const organisation_name = "Canada NG";
+const organisation_name = "Canada-Nigeria Business Investment Submit";
 
 export {
   domain,

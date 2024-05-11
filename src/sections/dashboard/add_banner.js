@@ -19,7 +19,7 @@ class Add_banner extends Handle_file_upload {
     this.setState({ loading: true });
 
     let cat = {
-      title: title.trim(),
+      title,
       _id,
       image,
       image_file_hash,
@@ -138,7 +138,7 @@ class Add_banner extends Handle_file_upload {
 
                 <div class="form-group">
                   <Stretch_button
-                    disabled={!title.trim() || !sub_text.trim() || !image}
+                    disabled={!title || !sub_text || !image}
                     loading={loading}
                     title={_id ? "Update" : "Add"}
                     action={this.add}

@@ -101,6 +101,14 @@ class Canada extends React.Component {
           path: "/about",
         },
         {
+          title: "events",
+          path: "/events",
+        },
+        {
+          title: "gallery",
+          path: "/gallery",
+        },
+        {
           title: "news",
           path: "/newsroom",
         },

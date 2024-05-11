@@ -37,7 +37,7 @@ class Sector extends React.Component {
           <div className="crs_trt_thumb">
             <Preview_image
               image_hash={image_file_hash}
-              style={{ height: 100, width: 100 }}
+              style={{ height: 100, resizeMode: "cover" }}
               image={
                 image || require("../assets/img/user_image_placeholder.png")
               }
