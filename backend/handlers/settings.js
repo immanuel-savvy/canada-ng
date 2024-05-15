@@ -208,6 +208,7 @@ const entry = (req, res) => {
       banners: GLOBALS.read({ global: GLOBAL_banner_stuff }),
       logo: GLOBALS.readone({ global: GLOBAL_logo }),
       flier_stuff: GLOBALS.readone({ global: GLOBAL_flier_stuff }),
+      timestamp: GLOBALS.readone({ global: GLOBAL_upcoming_event }),
       sectors: SECTORS.read(),
       sponsors: SPONSORS.read(),
     },
@@ -484,12 +485,23 @@ const logo_update = (req, res) => {
   res.json({ ok: true, data: { logo } });
 };
 
+const GLOBAL_upcoming_event = "upcoming_event";
+
+const upcoming_event = (req, res) => {
+  let { timestamp } = req.body;
+
+  GLOBALS.update({ global: GLOBAL_upcoming_event }, { timestamp });
+
+  res.json({ ok: true });
+};
+
 const banners_et_logo = (req, res) => {
   res.json({
     ok: true,
     data: {
       banners: GLOBALS.read({ global: GLOBAL_banner_stuff }),
       logo: GLOBALS.readone({ global: GLOBAL_logo }),
+      timestamp: GLOBALS.readone({ global: GLOBAL_upcoming_event }),
     },
   });
 };
@@ -527,6 +539,7 @@ export {
   update_page,
   page,
   GLOBAL_banner_stuff,
+  upcoming_event,
   add_banner,
   banners_et_logo,
   pages,
@@ -570,7 +583,9 @@ export {
   add_associate,
   update_associate,
   remove_associate,
+  GLOBAL_flier_stuff,
   associates,
   flier_stuff,
   handle_flier_stuff,
+  GLOBAL_upcoming_event,
 };

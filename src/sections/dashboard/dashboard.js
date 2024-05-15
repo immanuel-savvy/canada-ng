@@ -8,6 +8,7 @@ import Listempty from "../../components/listempty";
 import Loadindicator from "../../components/loadindicator";
 import Manage_logo from "./manage_logo";
 import Banner_component from "./banner_component";
+import Manage_upcoming_event from "./manage_upcoming_event";
 
 class Dashboard extends React.Component {
   constructor(props) {
@@ -17,9 +18,9 @@ class Dashboard extends React.Component {
   }
 
   componentDidMount = async () => {
-    let { banners, logo } = await get_request("banners_et_logo");
+    let { banners, logo, timestamp } = await get_request("banners_et_logo");
 
-    this.setState({ banners, logo });
+    this.setState({ banners, logo, timestamp: timestamp?.timestamp });
   };
 
   on_add = (banner) => {
@@ -54,7 +55,7 @@ class Dashboard extends React.Component {
   toggle_add_banner = () => this.add_banner?.toggle();
 
   render() {
-    let { banner_in_edit, banners, logo } = this.state;
+    let { banner_in_edit, banners, logo, timestamp } = this.state;
 
     return (
       <div className="col-lg-9 col-md-9 col-sm-12">
@@ -87,6 +88,10 @@ class Dashboard extends React.Component {
 
         <div className="row">
           <Manage_logo logo={logo} />
+        </div>
+
+        <div className="row">
+          <Manage_upcoming_event timestamp={timestamp} />
         </div>
 
         <Modal ref={(add_banner) => (this.add_banner = add_banner)}>

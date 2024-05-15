@@ -13,12 +13,14 @@ import {
   GLOBALS_sectors,
   GLOBALS_vision_statement,
   GLOBAL_donation_section,
+  GLOBAL_flier_stuff,
   GLOBAL_internship,
   GLOBAL_live_training,
   GLOBAL_logo,
   GLOBAL_mentorship,
   GLOBAL_speakers,
   GLOBAL_sponsors,
+  GLOBAL_upcoming_event,
 } from "./settings";
 import { GLOBAL_pending_talks } from "./speakers";
 
@@ -90,6 +92,12 @@ const create_default_admin = () => {
 
   !GLOBALS.readone({ global: GLOBAL_logo }) &&
     GLOBALS.write({ global: GLOBAL_logo });
+
+  !GLOBALS.readone({ global: GLOBAL_flier_stuff }) &&
+    GLOBALS.write({ global: GLOBAL_flier_stuff });
+
+  !GLOBALS.readone({ global: GLOBAL_upcoming_event }) &&
+    GLOBALS.write({ global: GLOBAL_upcoming_event });
 };
 
 export { create_default_admin, default_user };

@@ -60,6 +60,7 @@ import {
   pages,
   handle_flier_stuff,
   flier_stuff,
+  upcoming_event,
 } from "./handlers/settings";
 import {
   add_team_member,
@@ -163,6 +164,7 @@ const router = (app) => {
   app.get("/event_sponsors/:event", event_sponsors);
   app.get("/flier_stuff", flier_stuff);
 
+  app.post("/upcoming_event", upcoming_event);
   app.post("/handle_flier_stuff", handle_flier_stuff);
   app.post("/add_sector", add_sector);
   app.post("/update_sector", update_sector);

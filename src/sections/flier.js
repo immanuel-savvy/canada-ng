@@ -24,7 +24,7 @@ class Flier_section extends React.Component {
 
     return (
       <Nav_context.Consumer>
-        {({ flier_stuff }) => {
+        {({ flier_stuff, timestamp }) => {
           let { heading, bullets, image, text } = flier_stuff || {};
 
           return (
@@ -38,8 +38,8 @@ class Flier_section extends React.Component {
                     <div className="col-12"></div>
                     <div class="col-xl-8 col-lg-10 col-md-12 col-sm-12">
                       <div class="call_action mt-4 mb-4 text-center">
-                        <h2 class="mb-4">{heading}</h2>
-                        <p class="mb-4">{text}</p>
+                        {/* <h2 class="mb-4">{heading}</h2>
+                        <p class="mb-4">{text}</p> */}
                         <Preview_image
                           image={image || require(`../assets/img/c_flier.jpeg`)}
                         />
@@ -53,7 +53,7 @@ class Flier_section extends React.Component {
                         >
                           Upcoming Event
                         </h4>
-                        <Banner_countdown timestamp={Date.now() + Date.now()} />
+                        <Banner_countdown timestamp={timestamp?.timestamp} />
                       </div>
                     </div>
                   </div>

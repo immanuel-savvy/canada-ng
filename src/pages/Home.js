@@ -68,7 +68,7 @@ class Home extends React.Component {
 
                 <Flier_section />
 
-                <Who_we_are about={about} home />
+                {/* <Who_we_are about={about} home /> */}
 
                 {/* <Featured_sectors /> */}
                 {/* <Upcoming_seminars loggeduser={loggeduser} /> */}
