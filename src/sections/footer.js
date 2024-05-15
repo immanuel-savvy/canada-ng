@@ -81,7 +81,9 @@ class Footer extends React.Component {
                 <div className="row">
                   <div className="col-lg-4 col-md-4">
                     <div className="footer_widget">
-                      <h4 className="widget_title">Useful Links</h4>
+                      {navs?.length ? (
+                        <h4 className="widget_title">Useful Links</h4>
+                      ) : null}
                       <ul className="footer-menu">
                         {navs.map((nav) =>
                           nav === "developer" ? null : (

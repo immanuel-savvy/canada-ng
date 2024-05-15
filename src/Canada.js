@@ -92,10 +92,6 @@ class Canada extends React.Component {
         //   title: "speakers",
         //   path: "/speakers",
         // },
-        // {
-        //   title: "sponsors",
-        //   path: "/sponsors",
-        // },
         {
           title: "about",
           path: "/about",
@@ -107,6 +103,10 @@ class Canada extends React.Component {
         {
           title: "gallery",
           path: "/gallery",
+        },
+        {
+          title: "sponsors",
+          path: "/sponsors",
         },
         {
           title: "news",
@@ -142,6 +142,7 @@ class Canada extends React.Component {
     emitter.listen("edit_seminar", this.edit_seminar);
 
     let entry = await get_request("entry");
+
     this.setState({ entry });
   };
 

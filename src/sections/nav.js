@@ -113,7 +113,7 @@ class Custom_nav extends React.Component {
                                   src={`${domain}/images/${logo.logo}`}
                                   className="logo"
                                   id="logo_white"
-                                  style={{ maxHeight: 50 }}
+                                  style={{ maxHeight: 75 }}
                                   alt=""
                                 />
                               ) : (
@@ -307,10 +307,7 @@ class Custom_nav extends React.Component {
                                       ) : null}
                                     </UncontrolledDropdown>
                                   ) : nav.title ===
-                                    "search" ? null : //     <i className="ti-search"></i> //   > //     className="btn btn-action" //     style={{ border: "none" }} //     to="#" //   <Link // > //   } //     }) //       show_search: !this.state.show_search, //     this.setState({ //   onClick={() => // <li
-                                  //   </Link>
-                                  // </li>
-                                  nav.title === "logout" ? (
+                                    "search" ? null : nav.title === "logout" ? ( // </li> //   </Link> //     <i className="ti-search"></i> //   > //     className="btn btn-action" //     style={{ border: "none" }} //     to="#" //   <Link // > //   } //     }) //       show_search: !this.state.show_search, //     this.setState({ //   onClick={() => // <li
                                     <li>
                                       <Link
                                         onClick={

@@ -58,6 +58,8 @@ import {
   remove_associate,
   associates,
   pages,
+  handle_flier_stuff,
+  flier_stuff,
 } from "./handlers/settings";
 import {
   add_team_member,
@@ -159,7 +161,9 @@ const router = (app) => {
   app.get("/sponsors_page", sponsors_page);
   app.get("/get_sectors", get_sectors);
   app.get("/event_sponsors/:event", event_sponsors);
+  app.get("/flier_stuff", flier_stuff);
 
+  app.post("/handle_flier_stuff", handle_flier_stuff);
   app.post("/add_sector", add_sector);
   app.post("/update_sector", update_sector);
   app.post("/remove_sector/:sector", remove_sector);

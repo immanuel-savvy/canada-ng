@@ -5,6 +5,7 @@ import {
   PAGES,
   SECTORS,
   SEMINARS,
+  SPONSORS,
   TEAM_MEMBER,
   gds,
 } from "../ds/conn";
@@ -206,8 +207,9 @@ const entry = (req, res) => {
       mission: GLOBALS.readone({ global: GLOBALS_mission_statement }),
       banners: GLOBALS.read({ global: GLOBAL_banner_stuff }),
       logo: GLOBALS.readone({ global: GLOBAL_logo }),
+      flier_stuff: GLOBALS.readone({ global: GLOBAL_flier_stuff }),
       sectors: SECTORS.read(),
-      associates: ASSOCIATES.read(),
+      sponsors: SPONSORS.read(),
     },
   });
 };
@@ -244,6 +246,50 @@ const update_live_training = (req, res) => {
     ok: true,
     data: { video, thumbnail },
   });
+};
+
+const GLOBAL_flier_stuff = "flier_stuffs";
+
+const flier_stuff = (req, res) => {
+  let flier_stuff_ = GLOBALS.readone({
+    global: GLOBAL_flier_stuff,
+  });
+
+  res.json({
+    ok: true,
+    message: "flier stuffs",
+    data: flier_stuff_,
+  });
+};
+
+const handle_flier_stuff = (req, res) => {
+  let { bullets, heading, text, image, video, image_hash } = req.body;
+
+  let prior = GLOBALS.readone({ global: GLOBAL_flier_stuff });
+  if (!!prior) {
+    if (prior.image && image && image.startsWith("data"))
+      remove_image(prior.image);
+    if (prior.video && video && video.startsWith("data"))
+      remove_video(prior.video);
+
+    image = save_image(image);
+    video = save_image(video);
+    GLOBALS.update(
+      { global: GLOBAL_flier_stuff },
+      { image, heading, text, image_hash, bullets }
+    );
+  } else
+    GLOBALS.write({
+      image: save_image(image),
+      video: save_video(video),
+      image_hash,
+      bullets,
+      heading,
+      text,
+      global: GLOBAL_flier_stuff,
+    });
+
+  res.json({ ok: true, message: "flier stuffs", data: { image } });
 };
 
 const live_training = (req, res) => {
@@ -525,4 +571,6 @@ export {
   update_associate,
   remove_associate,
   associates,
+  flier_stuff,
+  handle_flier_stuff,
 };

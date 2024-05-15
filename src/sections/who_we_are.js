@@ -58,12 +58,6 @@ class Who_we_are extends React.Component {
             <div className="row align-items-center justify-content-between">
               <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12">
                 <div className="lmp_caption">
-                  {home ? null : (
-                    <>
-                      <span className="theme-cl">About Us</span>
-                      <h2 className="mb-3">What We Do & Our Aim</h2>
-                    </>
-                  )}
                   {about_statement?.split("\n").map((s, i) => (
                     <p key={i}>
                       {

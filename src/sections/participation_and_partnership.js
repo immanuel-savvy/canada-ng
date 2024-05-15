@@ -12,6 +12,10 @@ class Participation_and_partnership extends React.Component {
   componentDidMount = async () => {
     let parts = await get_request("participations");
 
+    parts = parts.sort((p1, p2) => {
+      return p1.created - p2.created;
+    });
+
     this.setState({ parts });
   };
 
@@ -38,9 +42,9 @@ class Participation_and_partnership extends React.Component {
             </div>
           </div>
           <div className="row justify-content-center">
-            {parts?.map((p, i) => (
-              <Participate participation={p} key={i} />
-            ))}
+            {Array.isArray(parts)
+              ? parts?.map((p, i) => <Participate participation={p} key={i} />)
+              : null}
           </div>
         </div>
       </section>

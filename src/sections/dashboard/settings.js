@@ -12,6 +12,7 @@ import Manage_internship from "./manage_internship";
 import Manage_sponsors_page from "./manage_sponsors_page";
 import Manage_speakers_page from "./manage_speakers_page";
 import Manage_sectors from "./manage_sectors";
+import Manage_flier_section from "./manage_filer_section";
 
 const tabs = new Object({
   about_statement: <Manage_about_statement />,
@@ -24,6 +25,7 @@ const tabs = new Object({
   sponsors: <Manage_sponsors_page />,
   speakers: <Manage_speakers_page />,
   sectors: <Manage_sectors />,
+  flier_section: <Manage_flier_section />,
 });
 
 class Settings extends React.Component {

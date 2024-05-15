@@ -3,6 +3,7 @@ import { get_request } from "../assets/js/utils/services";
 import Loadindicator from "../components/loadindicator";
 import Section_header from "../components/section_headers";
 import Sponsor from "../components/sponsor";
+import { Nav_context } from "../Contexts";
 
 class Sponsors extends React.Component {
   constructor(props) {
@@ -16,7 +17,6 @@ class Sponsors extends React.Component {
 
     let sponsors;
     if (!event) {
-      sponsors = await get_request("sponsors");
     } else {
       sponsors = await get_request(`event_sponsors/${event._id}`);
     }
@@ -27,29 +27,33 @@ class Sponsors extends React.Component {
   };
 
   render() {
-    let { sponsors } = this.state;
-
-    if (sponsors && !sponsors.length) return;
-
     return (
-      <section className="ed_view_box">
-        <div className="container">
-          <Section_header
-            title="sponsors"
-            description="We are incredibly grateful for the support and contribution of our valued sponsors."
-          />
+      <Nav_context.Consumer>
+        {({ sponsors }) => {
+          if (!sponsors?.length) return;
 
-          <div className="row align-items-center justify-content-center">
-            {sponsors ? (
-              sponsors.map((sponsor) => (
-                <Sponsor sponsor={sponsor} key={sponsor._id} />
-              ))
-            ) : (
-              <Loadindicator />
-            )}
-          </div>
-        </div>
-      </section>
+          return (
+            <section className="ed_view_box">
+              <div className="container">
+                <Section_header
+                  title="sponsors"
+                  description="We are incredibly grateful for the support and contribution of our valued sponsors."
+                />
+
+                <div className="row align-items-center justify-content-center">
+                  {sponsors ? (
+                    sponsors.map((sponsor) => (
+                      <Sponsor sponsor={sponsor} key={sponsor._id} />
+                    ))
+                  ) : (
+                    <Loadindicator />
+                  )}
+                </div>
+              </div>
+            </section>
+          );
+        }}
+      </Nav_context.Consumer>
     );
   }
 }

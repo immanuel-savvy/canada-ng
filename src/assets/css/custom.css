@@ -24,6 +24,10 @@ div::-webkit-scrollbar {
   display: none;
 }
 
+.firstly {
+  order: -1;
+}
+
 div {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */

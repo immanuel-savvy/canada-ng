@@ -13,6 +13,9 @@ import Custom_nav from "../sections/nav";
 import { default as Sponsors_section } from "../sections/sponsors";
 import { A_tag, Img_tag } from "../sections/who_we_are";
 import { H1_tag } from "./Mentorship";
+import Management_team from "../sections/management_team";
+import Priority_sectors from "../sections/priority_sectors";
+import Testimonials from "../sections/testimonials";
 
 const Li_tag = ({ children }) => {
   return (
@@ -121,7 +124,12 @@ class Sponsors extends React.Component {
           <Loadindicator />
         )}
 
+        <Management_team />
         <Sponsors_section />
+
+        <Priority_sectors />
+
+        <Testimonials />
 
         <Contact_us />
         <Footer />

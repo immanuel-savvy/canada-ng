@@ -8,16 +8,16 @@ import Articles from "../sections/articles";
 import Donations from "../sections/donations";
 import Footer from "../sections/footer";
 import Hero_banner from "../sections/hero_banner";
-import Live_training from "../sections/live_training";
 import Management_team from "../sections/management_team";
 import Nav from "../sections/nav";
 import Testimonials from "../sections/testimonials";
-import Vision_mission_stuff from "../sections/vision_mission_stuff";
 import Who_we_are from "../sections/who_we_are";
-import Featured_sectors from "../sections/featured_sectors";
 import Associates from "../components/associates";
 import Priority_sectors from "../sections/priority_sectors";
 import Participation_and_partnership from "../sections/participation_and_partnership";
+import Sponsors from "../sections/sponsors";
+import Flier_section from "../sections/flier";
+import Banner_countdown from "../components/banner_countdown";
 
 class Home extends React.Component {
   constructor(props) {
@@ -66,6 +66,8 @@ class Home extends React.Component {
                 )}
                 <Associates />
 
+                <Flier_section />
+
                 <Who_we_are about={about} home />
 
                 {/* <Featured_sectors /> */}
@@ -75,7 +77,9 @@ class Home extends React.Component {
 
                 <Participation_and_partnership />
 
-                {/* <Management_team /> */}
+                <Management_team />
+
+                <Sponsors />
 
                 {/* <Donations /> */}
 

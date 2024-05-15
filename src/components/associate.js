@@ -1,5 +1,6 @@
 import React from "react";
 import { domain } from "../assets/js/utils/constants";
+import Preview_image from "./preview_image";
 
 class Associate extends React.Component {
   constructor(props) {
@@ -13,13 +14,10 @@ class Associate extends React.Component {
 
     return (
       <li>
-        <div className="crp_img">
-          <img
-            src={`${domain}/images/${associate.logo}`}
-            className="img-fluid"
-            alt=""
-          />
-        </div>
+        <Preview_image
+          image={associate.logo}
+          style={{ height: 50, objectFit: "cover", width: "100%" }}
+        />
       </li>
     );
   }

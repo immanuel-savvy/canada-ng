@@ -19,8 +19,8 @@ class Associates extends React.Component {
   render() {
     return (
       <Nav_context.Consumer>
-        {({ associates }) => {
-          if (!associates?.length) return;
+        {({ sponsors }) => {
+          if (!sponsors?.length) return;
 
           return (
             <section className="p-0" style={{ zIndex: 2 }}>
@@ -41,7 +41,7 @@ class Associates extends React.Component {
                         >
                           <div className="part_rcp">
                             <ul>
-                              {associates.map((associate, index) => (
+                              {sponsors.map((associate, index) => (
                                 <li key={index}>
                                   <Associate associate={associate} />
                                 </li>
