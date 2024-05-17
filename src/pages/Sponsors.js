@@ -127,8 +127,6 @@ class Sponsors extends React.Component {
         <Management_team />
         <Sponsors_section />
 
-        <Priority_sectors />
-
         <Testimonials />
 
         <Contact_us />

@@ -18,6 +18,7 @@ import Participation_and_partnership from "../sections/participation_and_partner
 import Sponsors from "../sections/sponsors";
 import Flier_section from "../sections/flier";
 import Banner_countdown from "../components/banner_countdown";
+import Gallery from "../sections/gallery";
 
 class Home extends React.Component {
   constructor(props) {
@@ -86,6 +87,8 @@ class Home extends React.Component {
                 <Testimonials />
 
                 {/* <Live_training /> */}
+
+                <Gallery />
 
                 <Articles />
 

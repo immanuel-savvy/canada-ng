@@ -22,6 +22,7 @@ let USERS,
   SECTORS,
   VIDEO_REVIEWS,
   REPLIES,
+  GALLERY,
   CONFERENCES,
   TRENDING_ARTICLES,
   CONFERENCE_ATTENDANT,
@@ -64,6 +65,7 @@ const ds_conn = () => {
     "user"
   );
   USERS_HASH = gds.folder("user_hash", "user");
+  GALLERY = gds.folder("gallery");
 };
 
 export {
@@ -77,6 +79,7 @@ export {
   CONFERENCES,
   USER_SEMINARS,
   USERS_HASH,
+  GALLERY,
   PAGES,
   PENDING_TALKS,
   TEAM_MEMBER,

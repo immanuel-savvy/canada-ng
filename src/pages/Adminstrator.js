@@ -21,6 +21,7 @@ import Nav from "../sections/nav";
 import { emitter } from "../Canada";
 import Dashboard from "../sections/dashboard/dashboard";
 import Manage_participation from "../sections/dashboard/manage_participation";
+import Manage_gallery from "../sections/dashboard/manage_gallery";
 
 class Adminstrator extends React.Component {
   constructor(props) {
@@ -61,6 +62,7 @@ class Adminstrator extends React.Component {
       dashboard: <Dashboard />,
       new_article: <New_article />,
       manage_testimonials: <Manage_testimonials />,
+      manage_gallery: <Manage_gallery />,
       pending_testimonies: <Pending_reviews />,
       manage_participate: <Manage_participation />,
       manage_conferences: <Manage_conferences />,

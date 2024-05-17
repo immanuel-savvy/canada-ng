@@ -11,11 +11,11 @@ class Add_participate extends Handle_file_upload {
   constructor(props) {
     super(props);
 
-    let { participate } = this.props;
+    let { participation } = this.props;
     this.state = {
       title: "",
       features: new Array(),
-      ...participate,
+      ...participation,
     };
   }
 

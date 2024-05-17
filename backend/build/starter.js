@@ -111,5 +111,15 @@ const create_default_admin = () => {
   }) && _conn.GLOBALS.write({
     global: _settings.GLOBAL_logo
   });
+  !_conn.GLOBALS.readone({
+    global: _settings.GLOBAL_flier_stuff
+  }) && _conn.GLOBALS.write({
+    global: _settings.GLOBAL_flier_stuff
+  });
+  !_conn.GLOBALS.readone({
+    global: _settings.GLOBAL_upcoming_event
+  }) && _conn.GLOBALS.write({
+    global: _settings.GLOBAL_upcoming_event
+  });
 };
 exports.create_default_admin = create_default_admin;

@@ -45,17 +45,6 @@ class Flier_section extends React.Component {
                         />
                       </div>
                     </div>
-                    <div className="col-12 firstly">
-                      <div class="edu_wraper" style={{ alignSelf: "center" }}>
-                        <h4
-                          class="edu_title"
-                          style={{ fontSize: 28, textAlign: "center" }}
-                        >
-                          Upcoming Event
-                        </h4>
-                        <Banner_countdown timestamp={timestamp?.timestamp} />
-                      </div>
-                    </div>
                   </div>
                 </div>
               </section>

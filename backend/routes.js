@@ -132,7 +132,17 @@ import {
   update_event_sponsors,
   update_sponsor,
 } from "./handlers/sponsors";
-import { add_participate, participations } from "./handlers/participation";
+import {
+  add_participate,
+  participations,
+  update_participate,
+} from "./handlers/participation";
+import {
+  fetch_media,
+  new_media,
+  remove_media,
+  update_media,
+} from "./handlers/gallery";
 
 const router = (app) => {
   app.get("/user/:user_id", user);
@@ -164,11 +174,17 @@ const router = (app) => {
   app.get("/event_sponsors/:event", event_sponsors);
   app.get("/flier_stuff", flier_stuff);
 
+  app.post("/fetch_media", fetch_media);
+  app.post("/update_media", update_media);
+  app.post("/new_media", new_media);
+  app.post("/remove_media/:media", remove_media);
+
   app.post("/upcoming_event", upcoming_event);
   app.post("/handle_flier_stuff", handle_flier_stuff);
   app.post("/add_sector", add_sector);
   app.post("/update_sector", update_sector);
   app.post("/remove_sector/:sector", remove_sector);
+  app.post("/update_participate", update_participate);
   app.post("/add_associate", add_associate);
   app.post("/update_associate", update_associate);
   app.post("/remove_associate/:associate", remove_associate);

@@ -35,6 +35,8 @@ import Mentorship from "./pages/Mentorship";
 import Internship from "./pages/Internship";
 import Seminars from "./pages/Seminars";
 import Page from "./pages/Page";
+import Gallery from "./pages/Gallery";
+import Events from "./pages/Events";
 
 const emitter = new Emitter();
 
@@ -259,7 +261,9 @@ class Canada extends React.Component {
                 <Route path="Canada" element={<Seminar_detail />} />
                 <Route path="newsroom" element={<Blog />} />
                 <Route path="article" element={<Article />} />
+                <Route path="gallery" element={<Gallery />} />
                 <Route path="testimonials" element={<Testimonials />} />
+                <Route path="events" element={<Events />} />
                 <Route path="conference" element={<Conference />} />
                 <Route path="new_conference" element={<New_conference />} />
                 <Route path="sponsors" element={<Sponsors />} />

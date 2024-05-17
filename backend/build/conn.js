@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.gds = exports.default = exports.VIDEO_REVIEWS = exports.USER_SEMINARS = exports.USER_CONFERENCES = exports.USERS_HASH = exports.USERS = exports.TRENDING_ARTICLES = exports.TEAM_MEMBER = exports.SPONSORS = exports.SPEAKERS = exports.SEMINARS = exports.SECTORS = exports.REVIEWS = exports.REPLIES = exports.PENDING_TALKS = exports.PARTICIPATIONS = exports.PAGES = exports.GLOBALS = exports.EVENT_SPONSORS = exports.CONFERENCE_ATTENDANT = exports.CONFERENCES = exports.COMMENTS = exports.ATTENDANT = exports.ASSOCIATES = exports.ARTICLE_CATEGORIES = exports.ARTICLES = exports.ADMIN_HASH = exports.ADMINSTRATORS = void 0;
+exports.gds = exports.default = exports.VIDEO_REVIEWS = exports.USER_SEMINARS = exports.USER_CONFERENCES = exports.USERS_HASH = exports.USERS = exports.TRENDING_ARTICLES = exports.TEAM_MEMBER = exports.SPONSORS = exports.SPEAKERS = exports.SEMINARS = exports.SECTORS = exports.REVIEWS = exports.REPLIES = exports.PENDING_TALKS = exports.PARTICIPATIONS = exports.PAGES = exports.GLOBALS = exports.GALLERY = exports.EVENT_SPONSORS = exports.CONFERENCE_ATTENDANT = exports.CONFERENCES = exports.COMMENTS = exports.ATTENDANT = exports.ASSOCIATES = exports.ARTICLE_CATEGORIES = exports.ARTICLES = exports.ADMIN_HASH = exports.ADMINSTRATORS = void 0;
 var _generalisedDatastore = _interopRequireDefault(require("generalised-datastore"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 let gds = exports.gds = void 0;
@@ -27,6 +27,7 @@ let USERS = exports.USERS = void 0,
   SECTORS = exports.SECTORS = void 0,
   VIDEO_REVIEWS = exports.VIDEO_REVIEWS = void 0,
   REPLIES = exports.REPLIES = void 0,
+  GALLERY = exports.GALLERY = void 0,
   CONFERENCES = exports.CONFERENCES = void 0,
   TRENDING_ARTICLES = exports.TRENDING_ARTICLES = void 0,
   CONFERENCE_ATTENDANT = exports.CONFERENCE_ATTENDANT = void 0,
@@ -63,5 +64,6 @@ const ds_conn = () => {
   exports.ATTENDANT = ATTENDANT = gds.folder("attendant", "seminar", "user");
   exports.CONFERENCE_ATTENDANT = CONFERENCE_ATTENDANT = gds.folder("conference_attendant", "conference", "user");
   exports.USERS_HASH = USERS_HASH = gds.folder("user_hash", "user");
+  exports.GALLERY = GALLERY = gds.folder("gallery");
 };
 var _default = exports.default = ds_conn;

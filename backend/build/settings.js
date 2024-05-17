@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.update_vision = exports.update_sponsors = exports.update_speakers = exports.update_sectors = exports.update_sector = exports.update_page = exports.update_mission = exports.update_mentorship = exports.update_live_training = exports.update_internship = exports.update_event_highlight = exports.update_donation_section = exports.update_banner = exports.update_associate = exports.update_about_statement = exports.sponsors_page = exports.speakers_page = exports.sectors = exports.remove_sector = exports.remove_banner = exports.remove_associate = exports.pages = exports.page = exports.mission_vision_statement = exports.mentorship = exports.logo_update = exports.live_training = exports.internship = exports.get_sectors = exports.entry = exports.donation_section = exports.banners_et_logo = exports.associates = exports.add_sector = exports.add_banner = exports.add_associate = exports.about_statement = exports.GLOBAL_sponsors = exports.GLOBAL_speakers = exports.GLOBAL_mentorship = exports.GLOBAL_logo = exports.GLOBAL_live_training = exports.GLOBAL_internship = exports.GLOBAL_donation_section = exports.GLOBAL_banner_stuff = exports.GLOBALS_vision_statement = exports.GLOBALS_sectors = exports.GLOBALS_mission_statement = exports.GLOBALS_about_statement = void 0;
+exports.update_vision = exports.update_sponsors = exports.update_speakers = exports.update_sectors = exports.update_sector = exports.update_page = exports.update_mission = exports.update_mentorship = exports.update_live_training = exports.update_internship = exports.update_event_highlight = exports.update_donation_section = exports.update_banner = exports.update_associate = exports.update_about_statement = exports.upcoming_event = exports.sponsors_page = exports.speakers_page = exports.sectors = exports.remove_sector = exports.remove_banner = exports.remove_associate = exports.pages = exports.page = exports.mission_vision_statement = exports.mentorship = exports.logo_update = exports.live_training = exports.internship = exports.handle_flier_stuff = exports.get_sectors = exports.flier_stuff = exports.entry = exports.donation_section = exports.banners_et_logo = exports.associates = exports.add_sector = exports.add_banner = exports.add_associate = exports.about_statement = exports.GLOBAL_upcoming_event = exports.GLOBAL_sponsors = exports.GLOBAL_speakers = exports.GLOBAL_mentorship = exports.GLOBAL_logo = exports.GLOBAL_live_training = exports.GLOBAL_internship = exports.GLOBAL_flier_stuff = exports.GLOBAL_donation_section = exports.GLOBAL_banner_stuff = exports.GLOBALS_vision_statement = exports.GLOBALS_sectors = exports.GLOBALS_mission_statement = exports.GLOBALS_about_statement = void 0;
 var _conn = require("../ds/conn");
 var _utils = require("./utils");
 const GLOBALS_mission_statement = exports.GLOBALS_mission_statement = "mission_statement",
@@ -252,8 +252,14 @@ const entry = (req, res) => {
       logo: _conn.GLOBALS.readone({
         global: GLOBAL_logo
       }),
+      flier_stuff: _conn.GLOBALS.readone({
+        global: GLOBAL_flier_stuff
+      }),
+      timestamp: _conn.GLOBALS.readone({
+        global: GLOBAL_upcoming_event
+      }),
       sectors: _conn.SECTORS.read(),
-      associates: _conn.ASSOCIATES.read()
+      sponsors: _conn.SPONSORS.read()
     }
   });
 };
@@ -313,6 +319,62 @@ const update_live_training = (req, res) => {
   });
 };
 exports.update_live_training = update_live_training;
+const GLOBAL_flier_stuff = exports.GLOBAL_flier_stuff = "flier_stuffs";
+const flier_stuff = (req, res) => {
+  let flier_stuff_ = _conn.GLOBALS.readone({
+    global: GLOBAL_flier_stuff
+  });
+  res.json({
+    ok: true,
+    message: "flier stuffs",
+    data: flier_stuff_
+  });
+};
+exports.flier_stuff = flier_stuff;
+const handle_flier_stuff = (req, res) => {
+  let {
+    bullets,
+    heading,
+    text,
+    image,
+    video,
+    image_hash
+  } = req.body;
+  let prior = _conn.GLOBALS.readone({
+    global: GLOBAL_flier_stuff
+  });
+  if (!!prior) {
+    if (prior.image && image && image.startsWith("data")) (0, _utils.remove_image)(prior.image);
+    if (prior.video && video && video.startsWith("data")) remove_video(prior.video);
+    image = (0, _utils.save_image)(image);
+    video = (0, _utils.save_image)(video);
+    _conn.GLOBALS.update({
+      global: GLOBAL_flier_stuff
+    }, {
+      image,
+      heading,
+      text,
+      image_hash,
+      bullets
+    });
+  } else _conn.GLOBALS.write({
+    image: (0, _utils.save_image)(image),
+    video: (0, _utils.save_video)(video),
+    image_hash,
+    bullets,
+    heading,
+    text,
+    global: GLOBAL_flier_stuff
+  });
+  res.json({
+    ok: true,
+    message: "flier stuffs",
+    data: {
+      image
+    }
+  });
+};
+exports.handle_flier_stuff = handle_flier_stuff;
 const live_training = (req, res) => {
   res.json({
     ok: true,
@@ -583,6 +645,21 @@ const logo_update = (req, res) => {
   });
 };
 exports.logo_update = logo_update;
+const GLOBAL_upcoming_event = exports.GLOBAL_upcoming_event = "upcoming_event";
+const upcoming_event = (req, res) => {
+  let {
+    timestamp
+  } = req.body;
+  _conn.GLOBALS.update({
+    global: GLOBAL_upcoming_event
+  }, {
+    timestamp
+  });
+  res.json({
+    ok: true
+  });
+};
+exports.upcoming_event = upcoming_event;
 const banners_et_logo = (req, res) => {
   res.json({
     ok: true,
@@ -592,6 +669,9 @@ const banners_et_logo = (req, res) => {
       }),
       logo: _conn.GLOBALS.readone({
         global: GLOBAL_logo
+      }),
+      timestamp: _conn.GLOBALS.readone({
+        global: GLOBAL_upcoming_event
       })
     }
   });

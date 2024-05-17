@@ -15,6 +15,7 @@ var _reviews = require("./handlers/reviews");
 var _conference = require("./handlers/conference");
 var _sponsors = require("./handlers/sponsors");
 var _participation = require("./handlers/participation");
+var _gallery = require("./handlers/gallery");
 const router = app => {
   app.get("/user/:user_id", _users.user);
   app.get("/get_admins", _admin.get_admins);
@@ -43,9 +44,17 @@ const router = app => {
   app.get("/sponsors_page", _settings.sponsors_page);
   app.get("/get_sectors", _settings.get_sectors);
   app.get("/event_sponsors/:event", _sponsors.event_sponsors);
+  app.get("/flier_stuff", _settings.flier_stuff);
+  app.post("/fetch_media", _gallery.fetch_media);
+  app.post("/update_media", _gallery.update_media);
+  app.post("/new_media", _gallery.new_media);
+  app.post("/remove_media/:media", _gallery.remove_media);
+  app.post("/upcoming_event", _settings.upcoming_event);
+  app.post("/handle_flier_stuff", _settings.handle_flier_stuff);
   app.post("/add_sector", _settings.add_sector);
   app.post("/update_sector", _settings.update_sector);
   app.post("/remove_sector/:sector", _settings.remove_sector);
+  app.post("/update_participate", _participation.update_participate);
   app.post("/add_associate", _settings.add_associate);
   app.post("/update_associate", _settings.update_associate);
   app.post("/remove_associate/:associate", _settings.remove_associate);

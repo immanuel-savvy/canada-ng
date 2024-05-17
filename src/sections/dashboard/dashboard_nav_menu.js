@@ -38,6 +38,7 @@ class Dashboard_nav_menu extends React.Component {
         {
           title: "manage_speakers",
         },
+
         {
           title: "new_article",
         },
@@ -46,6 +47,9 @@ class Dashboard_nav_menu extends React.Component {
         },
         {
           title: "manage_testimonials",
+        },
+        {
+          title: "manage_gallery",
         },
         {
           title: "video_reviews",

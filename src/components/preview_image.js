@@ -1,31 +1,43 @@
 import React from "react";
 import { Blurhash } from "react-blurhash";
 import { LazyLoadImage } from "react-lazy-load-image-component";
-import { domain } from "../assets/js/utils/constants";
 import Loadindicator from "./loadindicator";
+import { domain } from "../assets/js/utils/constants";
 
 class Preview_image extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {};
+    let { height, width } = this.props;
+    this.state = { height, width: width || this.default_width() };
   }
 
+  default_width = () => {
+    let { parent_size, responsive } = this.props;
+    if (!responsive) return;
+
+    let w;
+    if (window.innerWidth < 500) w = window.innerWidth - 30;
+    else if (window.innerWidth > 500 && window.innerWidth < 1200)
+      w = (window.innerWidth - 100) / 3 - 45;
+    else w = (window.innerWidth - 160) / 4 - 80;
+
+    parent_size && parent_size({ width: w });
+    return w;
+  };
+
   render() {
-    let { image_loaded } = this.state;
+    let { image_loaded, height, width } = this.state;
     let {
-      action,
+      onclick,
       style,
       no_preview,
       image,
       class_name,
+      parent_size,
+      responsive,
       image_hash,
-      height,
-      onclick,
-      width,
     } = this.props;
-
-    if (!action) action = onclick;
 
     return (
       <span>
@@ -39,10 +51,44 @@ class Preview_image extends React.Component {
               ? image
               : `${domain}/images/${image}`
           }
-          onLoad={() => this.setState({ image_loaded: true })}
+          onLoad={({ target }) => {
+            let set = { image_loaded: true };
+            if (responsive) {
+              if (typeof responsive === "boolean") responsive = 5;
+              set.height = target.naturalHeight / responsive;
+              set.width = target.naturalWidth / responsive;
+
+              if (window.innerWidth < 500) {
+                let x = window.innerWidth / set.width;
+                set.width *= x;
+                set.height *= x;
+                // set.height -= 30;
+                // set.width -= 30;
+              } else if (window.innerWidth > 500 && window.innerWidth < 1200) {
+                let x = (window.innerWidth - 100) / 3 / set.width;
+                set.width = (window.innerWidth - 100) / 3;
+                set.height *= x;
+                // set.width -= 45;
+                // set.height -= 45;
+              } else {
+                let x = (window.innerWidth - 500) / 4 / set.width;
+                set.width = (window.innerWidth - 500) / 4;
+                set.height *= x;
+                // set.width -= 80;
+                // set.height -= 80;
+              }
+
+              parent_size && parent_size(set);
+            }
+            this.setState(set);
+          }}
           beforeLoad={() => this.setState({ image_load_started: true })}
-          className={class_name || "img-fluid round"}
-          onClick={action}
+          className={
+            responsive
+              ? "p-2 rounded"
+              : class_name || "img-fluid rounded image-responsive"
+          }
+          onClick={onclick}
           style={{
             height: image_loaded ? height || null : 0,
             width: width || null,
@@ -55,11 +101,11 @@ class Preview_image extends React.Component {
           ) : (
             <Blurhash
               hash={image_hash}
-              height={height || 21}
-              width={width || 60}
+              height={height || 210}
+              width={width || 600}
               className={class_name || "img-fluid rounded"}
               punch={1}
-              onClick={action}
+              onClick={onclick}
             />
           )
         ) : null}

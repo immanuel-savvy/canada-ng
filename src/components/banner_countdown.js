@@ -42,7 +42,7 @@ class Banner_countdown extends React.Component {
   };
 
   render() {
-    let { timestamp } = this.props;
+    let { timestamp, color } = this.props;
     let { hours, seconds, minutes, days, start } = this.state;
 
     if (timestamp < Date.now() || !start) return null;
@@ -55,6 +55,7 @@ class Banner_countdown extends React.Component {
           alignItems: "center",
           fontWeight: "bold",
           fontSize: 28,
+          color,
         }}
       >
         <span>{`${days} days`}</span>&nbsp;:&nbsp;
