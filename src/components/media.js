@@ -13,7 +13,7 @@ class Media extends React.Component {
   render() {
     let { width } = this.state;
     let { media, remove, edit } = this.props;
-    console.log(media);
+
     if (!media) return;
 
     let { video, image, image_hash, title, description } = media;

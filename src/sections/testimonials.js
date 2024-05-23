@@ -34,7 +34,6 @@ class Testimonials extends React.Component {
     let { no_gray } = this.props;
     let { reviews, videos } = this.state;
 
-    return null;
     return (
       <section className={no_gray ? "" : `gray`}>
         <div className="container">

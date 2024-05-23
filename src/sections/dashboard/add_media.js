@@ -20,15 +20,23 @@ class Add_media extends Handle_file_upload {
 
     this.setState({ uploading: true });
 
-    let { title, uploading, _id, image_hash, description, image, video } =
-      this.state;
+    let {
+      title,
+      uploading,
+      _id,
+      image_hash,
+      image_file_hash,
+      description,
+      image,
+      video,
+    } = this.state;
     if (uploading) return;
 
     let media = {
       title,
       description,
       image,
-      image_hash,
+      image_hash: image_file_hash || image_hash,
       video,
       _id,
     };
@@ -131,7 +139,9 @@ class Add_media extends Handle_file_upload {
                     className="custom-file-input"
                     id="customFile"
                     accept="image/*"
-                    onChange={(e) => this.handle_file(e, "image")}
+                    onChange={(e) =>
+                      this.handle_file(e, "image", null, null, true)
+                    }
                   />
                   <label className="custom-file-label" for="customFile">
                     Choose file

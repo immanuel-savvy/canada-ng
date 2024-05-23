@@ -13,11 +13,16 @@ class Testimonials_header extends React.Component {
   componentDidMount = async () => {
     let testimonials = await get_request("testimonials");
 
+    console.log(testimonials);
+
     this.setState({ testimonials });
   };
 
   render() {
     let { testimonials } = this.state;
+
+    if (!testimonials) return;
+
     let { title, text, video, thumbnail, thumbnail_hash } =
       testimonials || new Object();
 

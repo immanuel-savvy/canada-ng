@@ -19,7 +19,6 @@ class Manage_flier_section extends Handle_file_upload {
 
   componentDidMount = async () => {
     let flier_stuff = await get_request("flier_stuff");
-    console.log(flier_stuff);
 
     this.setState({ flier_stuff, ...flier_stuff });
   };
