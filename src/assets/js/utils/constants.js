@@ -1,12 +1,8 @@
 const DEV = false;
 
-const hostname = DEV
-  ? `http://${"localhost"}`
-  : "https://canada.giitafrica.com";
+const hostname = DEV ? `http://${"localhost"}` : "https://cnisc.ca";
 
-const client_domain = DEV
-  ? `${hostname}:3000`
-  : `https://canada.giitafrica.com`;
+const client_domain = DEV ? `${hostname}:3000` : `https://cnisc.ca`;
 
 const domain = DEV ? `${hostname}:1450` : `https://canadapi.giitafrica.com`;
 
