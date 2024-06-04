@@ -13,8 +13,6 @@ class Testimonials_header extends React.Component {
   componentDidMount = async () => {
     let testimonials = await get_request("testimonials");
 
-    console.log(testimonials);
-
     this.setState({ testimonials });
   };
 
@@ -23,7 +21,7 @@ class Testimonials_header extends React.Component {
 
     if (!testimonials) return;
 
-    let { title, text, video, thumbnail, thumbnail_hash } =
+    let { title, text, thumbnail, thumbnail_hash } =
       testimonials || new Object();
 
     return (
@@ -54,7 +52,7 @@ class Testimonials_header extends React.Component {
         {testimonials ? (
           <Col lg={6} md={6} sm={12} className="align-items-center">
             <Video
-              url={`${domain}/videos/${video}`}
+              url={"https://www.youtube.com/watch?v=0Wnxu0sIFq4"}
               thumbnail={thumbnail}
               thumbnail_hash={thumbnail_hash}
             />

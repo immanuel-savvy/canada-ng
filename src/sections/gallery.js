@@ -25,8 +25,6 @@ class Gallery extends React.Component {
       total_media: true,
     });
 
-    console.log(gallery);
-
     this.setState({ gallery, total_media });
   };
 
